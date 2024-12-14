@@ -1,5 +1,5 @@
 ---
-title: Leetcode-Solution-for-Same-Tree
+title: LeetCode-Solution-for-Same-Tree
 date: 2024-12-14 17:59:54
 categories: [LeetCode, Algorithm]
 tags: [Tree]
