@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Implement-Trie (Prefix Tree)
 date: 2025-01-03 08:00:59
 categories: [LeetCode, Algorithm]
-tags: [Tree]
+tags: [Tries (Prefix Trees)]
 ---
 
 # Question

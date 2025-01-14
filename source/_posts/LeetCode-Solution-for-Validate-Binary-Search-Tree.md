@@ -1,7 +1,8 @@
 ---
 title: LeetCode-Solution-for-Validate-Binary-Search-Tree
 date: 2024-12-21 09:45:12
-tags:
+categories: [LeetCode, Algorithm]
+tags: [Tree]
 ---
 
 # Question

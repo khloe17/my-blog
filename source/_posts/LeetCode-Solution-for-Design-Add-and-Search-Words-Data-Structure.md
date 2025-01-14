@@ -1,7 +1,8 @@
 ---
 title: LeetCode-Solution-for-Design-Add-and-Search-Words-Data-Structure
 date: 2025-01-04 17:17:53
-tags:
+categories: [LeetCode, Algorithm]
+tags: [Tries (Prefix Trees), DFS]
 ---
 
 # Question
