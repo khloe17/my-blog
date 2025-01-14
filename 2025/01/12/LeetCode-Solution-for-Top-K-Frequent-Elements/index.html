@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode-Solution-for-Top-K-Frequent-Elements | Pride Blog</title><meta name="author" content="Jinran Wu"><meta name="copyright" content="Jinran Wu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="QuestionGiven an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order. ExplanationExample 1:Input: nums &#x3D; [1,1,1,2,2,3], k &#x3D; 2Outp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-Solution-for-Top-K-Frequent-Elements">
+<meta property="og:url" content="https://khloe17.github.io/my-blog/2025/01/12/LeetCode-Solution-for-Top-K-Frequent-Elements/index.html">
+<meta property="og:site_name" content="Pride Blog">
+<meta property="og:description" content="QuestionGiven an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order. ExplanationExample 1:Input: nums &#x3D; [1,1,1,2,2,3], k &#x3D; 2Outp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://khloe17.github.io/my-blog/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-01-12T03:53:07.000Z">
+<meta property="article:modified_time" content="2025-01-12T13:44:16.786Z">
+<meta property="article:author" content="Jinran Wu">
+<meta property="article:tag" content="Bucket Sort">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://khloe17.github.io/my-blog/img/butterfly-icon.png"><link rel="shortcut icon" href="/my-blog/img/favicon.png"><link rel="canonical" href="https://khloe17.github.io/my-blog/2025/01/12/LeetCode-Solution-for-Top-K-Frequent-Elements/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/my-blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/my-blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode-Solution-for-Top-K-Frequent-Elements',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/my-blog/"><span class="site-name">Pride Blog</span></a><a class="nav-page-title" href="/my-blog/"><span class="site-name">LeetCode-Solution-for-Top-K-Frequent-Elements</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">LeetCode-Solution-for-Top-K-Frequent-Elements</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-12T03:53:07.000Z" title="Created 2025-01-12 03:53:07">2025-01-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-01-12T13:44:16.786Z" title="Updated 2025-01-12 13:44:16">2025-01-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/my-blog/categories/LeetCode/">LeetCode</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/my-blog/categories/LeetCode/Algorithm/">Algorithm</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order.</p>
+<h2 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h2><p>Example 1:<br>Input: nums &#x3D; [1,1,1,2,2,3], k &#x3D; 2<br>Output: [1,2]</p>
+<p>Example 2:<br>Input: nums &#x3D; [1], k &#x3D; 1<br>Output: [1]</p>
+<h1 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h1><p>Approach 1: Using sorting</p>
+<ol>
+<li>Count frequencies: Use collections.Counter to count the frequency of each element.</li>
+<li>Sort by frequency: Sort the items by frequency in descending order.</li>
+<li>Return top K: Slice the first k elements.</li>
+</ol>
+<p>Approach 2: Using bucket sort</p>
+<ol>
+<li>Count frequencies: Use collections.Counter to count the frequency of each element</li>
+<li>Bucket sort: Create a list of buckets, where the index represents the frequency, and the values are list of elements with that frequency.</li>
+<li>Extract top K: Traverse the buckets from high to low frequency and collect elements until k elements are found.</li>
+</ol>
+<p>tips:</p>
+<ol>
+<li>Purpose of buckets (list of lists)<br>The outer list is used to group numbers by their frequency.<br>Each inner list contains all the numbers with the same frequency.</li>
+</ol>
+<p>e.g. nums &#x3D; [1, 1, 1, 2, 2, 3], k &#x3D; 2</p>
+<p>buckets &#x3D; [[], [], [], []] # Indices correspond to frequencies 0, 1, 2, 3</p>
+<p>buckets[3].append(1) # Number 1 has frequency 3<br>buckets[2].append(2) # Number 2 has frequency 2<br>buckets[1].append(3) # Number 3 has frequency 1</p>
+<p>final buckets:<br>buckets &#x3D; [[], [3], [2], [1]]</p>
+<ol start="2">
+<li>Difference between extend and append</li>
+</ol>
+<p>extend:<br>Adds each element of the iterable (like a list) to the result list.<br>Merges the contents of the iterable into the list.</p>
+<p>e.g.<br>result &#x3D; [1]<br>bucket &#x3D; [2, 3]<br>result.extend(bucket) # Adds each element of bucket to result<br>print(result) # Output: [1, 2, 3]</p>
+<p>append:<br>Adds the entire iterable (e.g., the bucket list) as a single element to the result list.<br>The result list will now contain a nested list.</p>
+<p>e.g.<br>result &#x3D; [1]<br>bucket &#x3D; [2, 3]<br>result.append(bucket) # Adds bucket as a single element<br>print(result) # Output: [1, [2, 3]]</p>
+<ol start="3">
+<li>Purpose for result[:k]:<br>When processing a bucket, multiple elements with the same frequency may be added to result. This can cause result to exceed k elements, even with the len(result) &gt;&#x3D; k check.</li>
+</ol>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">topKFrequent</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="comment"># count frequencies</span></span><br><span class="line">        count = Counter(nums) \ e.g. &#123;<span class="number">1</span>: <span class="number">3</span>, <span class="number">2</span>: <span class="number">2</span>, <span class="number">3</span>: <span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># sort items by frequency in descending order</span></span><br><span class="line">        sorted_items = <span class="built_in">sorted</span>(count.items(), key=lambdas x: x[<span class="number">1</span>], reverse = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># extract the top k elements</span></span><br><span class="line">        <span class="keyword">return</span> [num <span class="keyword">for</span> num, freq <span class="keyword">in</span> sorted_items[:k]]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">topKFrequent</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        <span class="comment"># count frequencies</span></span><br><span class="line">        count = Counter(nums)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># bucket sort based on frequency</span></span><br><span class="line">        max_freq = <span class="built_in">max</span>(count.values()) <span class="comment"># maximum frequency is the largest value of frequency count dictionary</span></span><br><span class="line">        buckets = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(max_freq + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> num, freq <span class="keyword">in</span> count.values():</span><br><span class="line">            buckets[freq].append(num)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># extract top k elements</span></span><br><span class="line">        results = []</span><br><span class="line">        <span class="keyword">for</span> freq <span class="keyword">in</span> <span class="built_in">range</span>(max_freq, <span class="number">0</span>, -<span class="number">1</span>):</span><br><span class="line">            results.extend(buckets[freq])</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(results) &gt;= k: <span class="comment"># performance optimization (reduce unnecessary process for buckets)</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> results[:k]</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://khloe17.github.io/my-blog">Jinran Wu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://khloe17.github.io/my-blog/2025/01/12/LeetCode-Solution-for-Top-K-Frequent-Elements/">https://khloe17.github.io/my-blog/2025/01/12/LeetCode-Solution-for-Top-K-Frequent-Elements/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/my-blog/tags/Bucket-Sort/">Bucket Sort</a></div><div class="post-share"><div class="social-share" data-image="/my-blog/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/my-blog/2025/01/12/LeetCode-Solution-for-Find-Median-from-Data-Stream/" title="LeetCode-Solution-for-Find-Median-from-Data-Stream"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">LeetCode-Solution-for-Find-Median-from-Data-Stream</div></div><div class="info-2"><div class="info-item-1">QuestionThe median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values. For example, for arr &#x3D; [2,3,4], the median is 3.For example, for arr &#x3D; [2,3], the median is (2 + 3) &#x2F; 2 &#x3D; 2.5.Implement the MedianFinder class: MedianFinder() initializes the MedianFinder object.void addNum(int num) adds the integer num from the data stream to the data structure.double...</div></div></div></a><a class="pagination-related" href="/my-blog/2025/01/10/LeetCode-Solution-for-Word-Search-II/" title="LeetCode-Solution-for-Word-Search II"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">LeetCode-Solution-for-Word-Search II</div></div><div class="info-2"><div class="info-item-1">QuestionGiven an m x n board of characters and a list of strings words, return all words on the board. Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word. ExplanationGiven:A 2D board of characters (e.g., board &#x3D; [[“o”,”a”,”a”,”n”],[“e”,”t”,”a”,”e”],[“i”,”h”,”k”,”r”],[“i”,”f”,”l”,”v”]]).A list of words to find (e.g., words &#x3D;...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/my-blog/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/my-blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Jinran Wu</div><div class="author-info-description">My coding blog -- learning record</div><div class="site-data"><a href="/my-blog/archives/"><div class="headline">Articles</div><div class="length-num">16</div></a><a href="/my-blog/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/my-blog/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Explanation"><span class="toc-number">1.1.</span> <span class="toc-text">Explanation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Idea"><span class="toc-number">2.</span> <span class="toc-text">Idea</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/14/LeetCode-Solution-for-Valid-Anagram/" title="LeetCode-Solution-for-Valid-Anagram">LeetCode-Solution-for-Valid-Anagram</a><time datetime="2025-01-14T13:28:17.000Z" title="Created 2025-01-14 13:28:17">2025-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/12/LeetCode-Solution-for-Find-Median-from-Data-Stream/" title="LeetCode-Solution-for-Find-Median-from-Data-Stream">LeetCode-Solution-for-Find-Median-from-Data-Stream</a><time datetime="2025-01-12T17:39:45.000Z" title="Created 2025-01-12 17:39:45">2025-01-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/12/LeetCode-Solution-for-Top-K-Frequent-Elements/" title="LeetCode-Solution-for-Top-K-Frequent-Elements">LeetCode-Solution-for-Top-K-Frequent-Elements</a><time datetime="2025-01-12T03:53:07.000Z" title="Created 2025-01-12 03:53:07">2025-01-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/10/LeetCode-Solution-for-Word-Search-II/" title="LeetCode-Solution-for-Word-Search II">LeetCode-Solution-for-Word-Search II</a><time datetime="2025-01-10T23:35:33.000Z" title="Created 2025-01-10 23:35:33">2025-01-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/04/LeetCode-Solution-for-Design-Add-and-Search-Words-Data-Structure/" title="LeetCode-Solution-for-Design-Add-and-Search-Words-Data-Structure">LeetCode-Solution-for-Design-Add-and-Search-Words-Data-Structure</a><time datetime="2025-01-04T17:17:53.000Z" title="Created 2025-01-04 17:17:53">2025-01-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Jinran Wu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/my-blog/js/utils.js"></script><script src="/my-blog/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
