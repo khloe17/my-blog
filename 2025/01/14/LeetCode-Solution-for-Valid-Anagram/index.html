@@ -1,0 +1,177 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode-Solution-for-Valid-Anagram | Pride Blog</title><meta name="author" content="Jinran Wu"><meta name="copyright" content="Jinran Wu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="QuestionGiven two strings s and t, return true if t is an anagram of s, and false otherwise. ExplanationExamples of Anagrams:“listen” → “silent”“evil” → “vile”“cinema” → “iceman” Key Characteristics o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-Solution-for-Valid-Anagram">
+<meta property="og:url" content="https://khloe17.github.io/my-blog/2025/01/14/LeetCode-Solution-for-Valid-Anagram/index.html">
+<meta property="og:site_name" content="Pride Blog">
+<meta property="og:description" content="QuestionGiven two strings s and t, return true if t is an anagram of s, and false otherwise. ExplanationExamples of Anagrams:“listen” → “silent”“evil” → “vile”“cinema” → “iceman” Key Characteristics o">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://khloe17.github.io/my-blog/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-01-14T13:28:17.000Z">
+<meta property="article:modified_time" content="2025-01-14T15:12:04.709Z">
+<meta property="article:author" content="Jinran Wu">
+<meta property="article:tag" content="Hash Table">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://khloe17.github.io/my-blog/img/butterfly-icon.png"><link rel="shortcut icon" href="/my-blog/img/favicon.png"><link rel="canonical" href="https://khloe17.github.io/my-blog/2025/01/14/LeetCode-Solution-for-Valid-Anagram/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/my-blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/my-blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode-Solution-for-Valid-Anagram',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/my-blog/"><span class="site-name">Pride Blog</span></a><a class="nav-page-title" href="/my-blog/"><span class="site-name">LeetCode-Solution-for-Valid-Anagram</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">LeetCode-Solution-for-Valid-Anagram</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-01-14T13:28:17.000Z" title="Created 2025-01-14 13:28:17">2025-01-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-01-14T15:12:04.709Z" title="Updated 2025-01-14 15:12:04">2025-01-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/my-blog/categories/LeetCode/">LeetCode</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/my-blog/categories/LeetCode/Algorithm/">Algorithm</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h1><p>Given two strings s and t, return true if t is an anagram of s, and false otherwise.</p>
+<h2 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h2><p>Examples of Anagrams:<br>“listen” → “silent”<br>“evil” → “vile”<br>“cinema” → “iceman”</p>
+<p>Key Characteristics of Anagrams:<br>They must use all the original letters exactly once.<br>The rearranged letters form a valid word or phrase in the same language.<br>Case and spacing are usually ignored, but some contexts may consider them.</p>
+<p>Non-Examples (Not Anagrams):<br>“hello” → “olehl” (Not a valid word, so it’s not an anagram.)</p>
+<h1 id="Idea"><a href="#Idea" class="headerlink" title="Idea"></a>Idea</h1><p>Approach 1: Sort both strings<br>Sorting rearranges the characters in a consistent order, so if <code>s</code> and <code>t</code> are anagrams, their sorted versions will match.</p>
+<p>Approach 2: Use a frequency counter<br>Count the occurrences of each character in <code>s</code> and <code>t</code>. If the frequency counts match, the strings are anagrams.</p>
+<p>Approach 3: Manual character counting</p>
+<ol>
+<li>Use an array of size 26 to count character frequencies.</li>
+<li>Increment for characters in <code>s</code> and decrement for characters in <code>t</code>.</li>
+<li>If the array contains all zeros, the string are anagrams.</li>
+</ol>
+<p>Example for approach 3:<br>s &#x3D; “anagram”<br>t &#x3D; “nagaram”<br>count after s &#x3D; [3, 0, 0, 0, 0, 0, …, 1, …, 1, 1, 0]<br>count after t &#x3D; [0, 0, 0, 0, 0, 0, …, 0, …, 0, 0, 0]</p>
+<p>Tips:</p>
+<ol>
+<li>The all() function returns:</li>
+</ol>
+<p>True if all elements in the iterable (like a list, tuple, or generator) are True.<br>False if any element is False.</p>
+<ol start="2">
+<li>The ord() function in Python is used to convert a character into its corresponding Unicode code point (integer value).</li>
+</ol>
+<p>Example 1: Basic Characters<br>print(ord(‘a’)) # Output: 97<br>print(ord(‘A’)) # Output: 65<br>print(ord(‘z’)) # Output: 122<br>print(ord(‘0’)) # Output: 48<br>print(ord(‘$’)) # Output: 36</p>
+<p>Example 2: Spaces and Special Characters<br>print(ord(‘ ‘)) # Output: 32 (space character)<br>print(ord(‘\n’)) # Output: 10 (newline character)</p>
+<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sorted</span>(s) == <span class="built_in">sorted</span>(t)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections.Counter</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> Counter(s) == Counter(t)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isAnagram</span>(<span class="params">self, s: <span class="built_in">str</span>, t: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(s) != <span class="built_in">len</span>(t):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">        count = [<span class="number">0</span>] * <span class="number">26</span> <span class="comment"># for lowercase English letters</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> s:</span><br><span class="line">            count[<span class="built_in">ord</span>(char) - <span class="built_in">ord</span>(<span class="string">&quot;a&quot;</span>)]] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> char <span class="keyword">in</span> t:</span><br><span class="line">            count[<span class="built_in">ord</span>(char) - <span class="built_in">ord</span>(<span class="string">&quot;a&quot;</span>)]] -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">all</span>(c == <span class="number">0</span> <span class="keyword">for</span> c <span class="keyword">in</span> count)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://khloe17.github.io/my-blog">Jinran Wu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://khloe17.github.io/my-blog/2025/01/14/LeetCode-Solution-for-Valid-Anagram/">https://khloe17.github.io/my-blog/2025/01/14/LeetCode-Solution-for-Valid-Anagram/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/my-blog/tags/Hash-Table/">Hash Table</a></div><div class="post-share"><div class="social-share" data-image="/my-blog/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/my-blog/2025/01/12/LeetCode-Solution-for-Find-Median-from-Data-Stream/" title="LeetCode-Solution-for-Find-Median-from-Data-Stream"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">LeetCode-Solution-for-Find-Median-from-Data-Stream</div></div><div class="info-2"><div class="info-item-1">QuestionThe median is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values. For example, for arr &#x3D; [2,3,4], the median is 3.For example, for arr &#x3D; [2,3], the median is (2 + 3) &#x2F; 2 &#x3D; 2.5.Implement the MedianFinder class: MedianFinder() initializes the MedianFinder object.void addNum(int num) adds the integer num from the data stream to the data structure.double...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/my-blog/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/my-blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Jinran Wu</div><div class="author-info-description">My coding blog -- learning record</div><div class="site-data"><a href="/my-blog/archives/"><div class="headline">Articles</div><div class="length-num">16</div></a><a href="/my-blog/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/my-blog/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Question"><span class="toc-number">1.</span> <span class="toc-text">Question</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Explanation"><span class="toc-number">1.1.</span> <span class="toc-text">Explanation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Idea"><span class="toc-number">2.</span> <span class="toc-text">Idea</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code"><span class="toc-number">3.</span> <span class="toc-text">Code</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/14/LeetCode-Solution-for-Valid-Anagram/" title="LeetCode-Solution-for-Valid-Anagram">LeetCode-Solution-for-Valid-Anagram</a><time datetime="2025-01-14T13:28:17.000Z" title="Created 2025-01-14 13:28:17">2025-01-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/12/LeetCode-Solution-for-Find-Median-from-Data-Stream/" title="LeetCode-Solution-for-Find-Median-from-Data-Stream">LeetCode-Solution-for-Find-Median-from-Data-Stream</a><time datetime="2025-01-12T17:39:45.000Z" title="Created 2025-01-12 17:39:45">2025-01-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/12/LeetCode-Solution-for-Top-K-Frequent-Elements/" title="LeetCode-Solution-for-Top-K-Frequent-Elements">LeetCode-Solution-for-Top-K-Frequent-Elements</a><time datetime="2025-01-12T03:53:07.000Z" title="Created 2025-01-12 03:53:07">2025-01-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/10/LeetCode-Solution-for-Word-Search-II/" title="LeetCode-Solution-for-Word-Search II">LeetCode-Solution-for-Word-Search II</a><time datetime="2025-01-10T23:35:33.000Z" title="Created 2025-01-10 23:35:33">2025-01-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/my-blog/2025/01/04/LeetCode-Solution-for-Design-Add-and-Search-Words-Data-Structure/" title="LeetCode-Solution-for-Design-Add-and-Search-Words-Data-Structure">LeetCode-Solution-for-Design-Add-and-Search-Words-Data-Structure</a><time datetime="2025-01-04T17:17:53.000Z" title="Created 2025-01-04 17:17:53">2025-01-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Jinran Wu</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/my-blog/js/utils.js"></script><script src="/my-blog/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
