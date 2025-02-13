@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Reverse-String
 date: 2025-02-06 21:17:06
 categories: [LeetCode, Algorithm]
-tags: String
+tags: [String]
 ---
 
 # Question

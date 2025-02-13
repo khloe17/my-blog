@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Move-Zeroes
 date: 2025-01-19 17:26:34
 categories: [LeetCode, Algorithm]
-tags: Array
+tags: [Array]
 ---
 
 # Question

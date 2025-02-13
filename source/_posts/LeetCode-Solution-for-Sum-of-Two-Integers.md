@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Sum-of-Two-Integers
 date: 2025-01-17 16:34:30
 categories: [LeetCode, Algorithm]
-tags: Bit Manipulation
+tags: [Bit Manipulation]
 ---
 
 # Question

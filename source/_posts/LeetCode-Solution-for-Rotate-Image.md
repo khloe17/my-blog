@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Rotate-Image
 date: 2025-02-09 14:32:15
 categories: [LeetCode, Algorithm]
-tags: Array
+tags: [Array]
 ---
 
 # Question

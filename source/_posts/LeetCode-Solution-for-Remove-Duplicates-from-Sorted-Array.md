@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Remove-Duplicates-from-Sorted-Array
 date: 2025-01-19 12:32:39
 categories: [LeetCode, Algorithm]
-tags: Array
+tags: [Array]
 ---
 
 # Question

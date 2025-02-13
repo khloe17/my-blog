@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Longest-Palindromic-Substring
 date: 2025-02-06 21:31:54
 categories: [LeetCode, Algorithm]
-tags: String
+tags: [String]
 ---
 
 # Question

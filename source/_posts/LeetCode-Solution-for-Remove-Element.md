@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Remove-Element
 date: 2025-01-19 17:07:21
 categories: [LeetCode, Algorithm]
-tags: Array
+tags: [Array]
 ---
 
 # Question

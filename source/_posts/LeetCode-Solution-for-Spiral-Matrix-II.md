@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Spiral-Matrix II
 date: 2025-02-13 18:53:56
 categories: [LeetCode, Algorithm]
-tags: Array
+tags: [Array]
 ---
 
 # Question

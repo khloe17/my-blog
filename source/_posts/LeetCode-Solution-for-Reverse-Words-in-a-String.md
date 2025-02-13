@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Reverse-Words-in-a-String
 date: 2025-02-07 06:58:44
 categories: [LeetCode, Algorithm]
-tags: String
+tags: [String]
 ---
 
 # Question

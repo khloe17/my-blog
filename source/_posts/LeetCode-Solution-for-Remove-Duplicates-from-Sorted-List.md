@@ -2,7 +2,7 @@
 title: LeetCode-Solution-for-Remove-Duplicates-from-Sorted-List
 date: 2025-02-06 21:51:31
 categories: [LeetCode, Algorithm]
-tags: Linked List
+tags: [Linked List]
 ---
 
 # Question
